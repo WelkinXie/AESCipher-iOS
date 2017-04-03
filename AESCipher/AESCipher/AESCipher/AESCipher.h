@@ -10,10 +10,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AESCipher : NSObject
+NSString * aesEncryptString(NSString *content, NSString *key);
+NSString * aesDecryptString(NSString *content, NSString *key);
 
-+ (NSString *)encryptAES:(NSString *)content key:(NSString *)key;
-
-+ (NSString *)decryptAES:(NSString *)content key:(NSString *)key;
-
-@end
+NSData * aesEncryptData(NSData *data, NSData *key);
+NSData * aesDecryptData(NSData *data, NSData *key);

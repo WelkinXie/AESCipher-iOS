@@ -23,11 +23,11 @@
     NSString *plainText = @"IAmThePlainText";
     NSString *key = @"16BytesLengthKey";
     
-    NSString *cipherText = [AESCipher encryptAES:plainText key:key];
+    NSString *cipherText = aesEncryptString(plainText, key);
     
     NSLog(@"%@", cipherText);
     
-    NSString *decryptedText = [AESCipher decryptAES:cipherText key:key];
+    NSString *decryptedText = aesDecryptString(cipherText, key);
     
     NSLog(@"%@", decryptedText);
 }
