@@ -21,8 +21,8 @@ NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation opera
     void const *contentBytes = contentData.bytes;
     void const *keyBytes = keyData.bytes;
     
-    size_t decryptSize = dataLength + kCCBlockSizeAES128;
-    void *decryptedBytes = malloc(decryptSize);
+    size_t operationSize = dataLength + kCCBlockSizeAES128;
+    void *operationBytes = malloc(operationSize);
     size_t actualOutSize = 0;
     
     CCCryptorStatus cryptStatus = CCCrypt(operation,
@@ -33,14 +33,14 @@ NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation opera
                                           initVectorBytes,
                                           contentBytes,
                                           dataLength,
-                                          decryptedBytes,
-                                          decryptSize,
+                                          operationBytes,
+                                          operationSize,
                                           &actualOutSize);
     
     if (cryptStatus == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:decryptedBytes length:actualOutSize];
+        return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];
     }
-    free(decryptedBytes);
+    free(operationBytes);
     return nil;
 }
 
