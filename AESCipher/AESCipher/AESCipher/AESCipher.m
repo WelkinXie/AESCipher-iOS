@@ -59,9 +59,13 @@ NSString * aesDecryptString(NSString *content, NSString *key) {
 }
 
 NSData * aesEncryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@"The key size of AES-%lu should be %lu bytes!", kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
     return cipherOperation(contentData, keyData, kCCEncrypt);
 }
 
 NSData * aesDecryptData(NSData *contentData, NSData *keyData) {
+    NSString *hint = [NSString stringWithFormat:@"The key size of AES-%lu should be %lu bytes!", kKeySize * 8, kKeySize];
+    NSCAssert(keyData.length == kKeySize, hint);
     return cipherOperation(contentData, keyData, kCCDecrypt);
 }
