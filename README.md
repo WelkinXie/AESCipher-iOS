@@ -22,7 +22,7 @@ NSString * aesDecryptString(NSString *content, NSString *key);
 NSData * aesDecryptData(NSData *data, NSData *key);
 ```
 
-__Attention__ , this repo is based on __AES-128__ so you should use a __16-byte-key__ .
+__Attention__ , this repo is based on __AES-128__ so you should use a __16-byte-key__ . If you want to use __AES-256__ , change __kKeySize__ to __kCCKeySizeAES256__ , and use 32 bytes' KEY.
 
 Additionally you can modify the __kInitVector__ with another 16 bytes string in line 14 of __AESCipher.m__ , but you should make sure to keep it the same with __IV_STRING__ in line 23 of [AESCipher-Java](https://github.com/WelkinXie/AESCipher-Java).
 
@@ -50,7 +50,7 @@ NSString * aesDecryptString(NSString *content, NSString *key);
 NSData * aesDecryptData(NSData *data, NSData *key);
 ```
 
-__注意__ ，由于这个库是基于 __AES-128__ 的，因此请确保传入的 KEY 大小为 __16__ 字节。
+__注意__ ，由于这个库是基于 __AES-128__ 的，因此请确保传入的 KEY 大小为 __16__ 字节。如果要使用 __AES-256__ ，修改 __kKeySize__ 为 __kCCKeySizeAES256__，然后提供 32 字节的 KEY 就可以了。
 
 另外你也可以将 __AESCipher.m__ 第 14 行中的 __kInitVector__ 修改为其他 16 字节的字符串，但请确保其与 [AESCipher-Java](https://github.com/WelkinXie/AESCipher-Java) 第 23 行处的 __IV_STRING__ 保持一致。
 
